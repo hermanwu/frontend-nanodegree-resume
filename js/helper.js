@@ -2,9 +2,8 @@
 
 This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
 
-Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
-
 Cameron Pittman
+Edited by Herman Wu
 */
 
 
@@ -85,7 +84,9 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
+    var x = loc.pageX;
+    var y = loc.pageY;
+    logClicks(x, y);
 });
 
 
@@ -106,7 +107,11 @@ function initializeMap() {
   var locations;
 
   var mapOptions = {
-    disableDefaultUI: true
+    disableDefaultUI: false,
+    // disable scrollwheel so it will not disturb visitors when scrolling through the page
+    scrollwheel: false,
+    scaleControl: true
+
   };
 
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
@@ -152,6 +157,7 @@ function initializeMap() {
     var lat = placeData.geometry.location.lat();  // latitude from the place service
     var lon = placeData.geometry.location.lng();  // longitude from the place service
     var name = placeData.formatted_address;   // name of the place from the place service
+    
     var bounds = window.mapBounds;            // current boundaries of the map window
 
     // marker is an object with additional data about the pin for a single location
@@ -170,7 +176,7 @@ function initializeMap() {
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+      infoWindow.open(map, marker);
     });
 
     // this is where the pin actually gets added to the map.

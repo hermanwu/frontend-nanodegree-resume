@@ -1,7 +1,7 @@
 * {
   padding:0;
   margin:0;
-  font-family: 'Roboto', sans-serif;
+  /*font-family: 'Roboto', sans-serif;*/
 }
 
 .clearfix {
@@ -164,6 +164,11 @@ img {
 
 span {
   padding: 5px;
+}
+
+/*add css to setup max width of the image*/
+.project-entry img{
+  max-width:300px;
 }
 
 #letsConnect {
